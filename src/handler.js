@@ -136,6 +136,7 @@ const getBookByIdhandler = (request, h) => {
 
 const updateBookByIdHandler = (request, h) => {
   const { bookId } = request.params;
+
   const {
     name,
     year,
@@ -146,6 +147,8 @@ const updateBookByIdHandler = (request, h) => {
     readPage,
     reading,
   } = request.payload;
+  const updatedAt = new Date().toISOString();
+  const index = books.findIndex((book) => book.id === bookId);
 
   //   validasi
   if (!name) {
